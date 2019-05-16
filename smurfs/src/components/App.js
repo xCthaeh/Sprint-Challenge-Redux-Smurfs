@@ -1,5 +1,8 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import { Route, Switch, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { getSmurfs, addSmurf } from "../actions";
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -7,16 +10,30 @@ import './App.css';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  state = {
+    name: "",
+    age: "",
+    height: ""
+  };
   render() {
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        <h1>testing, testing</h1>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    smurfs: state.smurfs,
+    fetchingSmurfs: state.fetchingSmurfs
+  };
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { getSmurfs, addSmurf }
+  )(App)
+);
