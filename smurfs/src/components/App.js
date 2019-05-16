@@ -61,7 +61,11 @@ class App extends Component {
       <div className="App">
         <Header />
         <Form />
-        <SmurfsList />
+        <Route
+          exact
+          path="/"
+          render={props => <SmurfsList smurfs={this.props.smurfs} />}
+        />
       </div>
     );
   }
