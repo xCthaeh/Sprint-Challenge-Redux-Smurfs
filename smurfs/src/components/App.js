@@ -4,6 +4,8 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { getSmurfs, addSmurf } from "../actions";
 import Header from "./Header";
+import Form from "./Form";
+import SmurfsList from "./SmurfsList";
 
 /*
  to wire this component up you're going to need a few things.
@@ -59,6 +61,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <Form />
+        <SmurfsList />
       </div>
     );
   }
