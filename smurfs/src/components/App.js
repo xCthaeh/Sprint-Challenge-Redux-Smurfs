@@ -3,6 +3,8 @@ import "./App.css";
 import { Route, Switch, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { getSmurfs, addSmurf } from "../actions";
+import Header from "./Header";
+
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -20,6 +22,26 @@ class App extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  handleSmurfSubmit = e => {
+    e.preventDefault();
+
+    const newSmurf = {
+      name: this.state.name,
+      age: this.state.age,
+      height: this.state.height
+    };
+
+    this.props.addSmurf(newSmurf);
+
+    this.setState({
+      name: "",
+      age: "",
+      height: ""
+    });
+
+    this.props.history.push("/");
+  };
+
   handleCancel = e => {
     e.preventDefault();
 
@@ -35,7 +57,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>testing, testing</h1>
+        <Header />
       </div>
     );
   }
