@@ -15,6 +15,23 @@ class App extends Component {
     age: "",
     height: ""
   };
+
+  handleInputChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleCancel = e => {
+    e.preventDefault();
+
+    this.setState({
+      name: "",
+      age: "",
+      height: ""
+    });
+
+    this.props.history.push("/");
+  };
+
   render() {
     return (
       <div className="App">
