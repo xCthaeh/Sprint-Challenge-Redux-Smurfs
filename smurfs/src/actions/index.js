@@ -42,13 +42,30 @@ export const getSmurf = id => {
   };
 };
 
-/*
-  For this project you'll need at least 2 action creators for the main portion,
-   and 2 more for the stretch problem.
-   Be sure to include action types for each type of action creator. Also, be sure to mind
-     the "pending" states like, fetching, creating, updating and deleting.
-   C - addSmurf
-   R - getSmurfs
-   U - updateSmurf
-   D - deleteSmurf
-*/
+export const editSmurf = editedSmurf => {
+  return dispatch => {
+    dispatch({ type: "EDITING_SMURF" });
+    axios
+      .put(`http://localhost:3333/smurfs/${editedSmurf.id}`, editedSmurf)
+      .then(response => {
+        dispatch({ type: "SMURF_EDITED", payload: response.data });
+      })
+      .catch(error => {
+        dispatch({ type: "ERROR", payload: error });
+      });
+  };
+};
+
+export const deleteSmurf = id => {
+  return dispatch => {
+    dispatch({ type: "DELETING_SMURF" });
+    axios
+      .delete(`http://localhost:3333/smurfs/${id}`)
+      .then(response => {
+        dispatch({ type: "SMURF_DELETED", payload: response.data });
+      })
+      .catch(error => {
+        dispatch({ type: "ERROR", payload: error });
+      });
+  };
+};

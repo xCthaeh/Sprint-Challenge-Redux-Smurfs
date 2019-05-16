@@ -1,18 +1,13 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import "./App.css";
 import { Route, Switch, withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import { getSmurfs, addSmurf } from "../actions";
 import Header from "./Header";
 import Form from "./Form";
 import SmurfsList from "./SmurfsList";
+import Smurf from "./Smurf";
+import { getSmurfs, addSmurf } from "../actions";
 
-/*
- to wire this component up you're going to need a few things.
- I'll let you do this part on your own. 
- Just remember, `how do I `connect` my components to redux?`
- `How do I ensure that my component links the state to props?`
- */
 class App extends Component {
   state = {
     name: "",
@@ -20,9 +15,9 @@ class App extends Component {
     height: ""
   };
 
-  handleInputChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+  componentDidMount() {
+    this.props.getSmurfs();
+  }
 
   handleSmurfSubmit = e => {
     e.preventDefault();
@@ -44,6 +39,10 @@ class App extends Component {
     this.props.history.push("/");
   };
 
+  handleInputChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
   handleCancel = e => {
     e.preventDefault();
 
@@ -57,15 +56,37 @@ class App extends Component {
   };
 
   render() {
+    if (this.props.fetchingSmurfs) {
+      return <div>Loading smurfs...</div>;
+    }
+
     return (
-      <div className="App">
+      <div className="wrapper">
         <Header />
-        <Form />
+
         <Route
           exact
           path="/"
           render={props => <SmurfsList smurfs={this.props.smurfs} />}
         />
+
+        <Switch>
+          <Route
+            path="/smurfs/add"
+            render={props => (
+              <Form
+                name={this.state.name}
+                age={this.state.age}
+                height={this.state.height}
+                handleSmurfSubmit={this.handleSmurfSubmit}
+                handleInputChange={this.handleInputChange}
+                handleCancel={this.handleCancel}
+              />
+            )}
+          />
+
+          <Route path="/smurfs/:id" render={props => <Smurf {...props} />} />
+        </Switch>
       </div>
     );
   }
