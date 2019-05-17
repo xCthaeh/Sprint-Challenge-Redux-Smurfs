@@ -1,28 +1,189 @@
-.App {
-  text-align: center;
+body {
+  background-image: url("fairy.jpg");
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+a {
+  color: #fff;
+  text-decoration: none;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+a:visited {
+  color: #fff;
+}
+
+form {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+form input {
+  box-sizing: border-box;
+  width: 200px;
+  height: 50px;
+  padding: 0 15px;
+  margin-bottom: 10px;
+  border: 2px solid #761e33;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+button {
+  width: 200px;
+  height: 50px;
+  padding: 0;
+  margin-top: 10px;
+  color: #fff;
+  background: #165530;
+  border: 3px solid #761e33;
+  border-radius: 4px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 10px;
+}
+
+button:hover {
+  color: #761e33;
+  background: #fff;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  border: 3px solid #761e33;
+  background: #165530;
+  border-radius: 4px;
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+.header a {
+  font-size: 20px;
 }
 
-.App-intro {
-  font-size: large;
+.home-link {
+  width: 25%;
+  text-align: right;
+  padding-right: 20px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.add-smurf-link {
+  width: 25%;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.header-title {
+  width: 50%;
+  text-align: center;
+}
+
+.header h2 {
+  font-size: 35px;
+}
+
+.header a {
+  text-decoration: none;
+  padding: 10px 20px;
+  background: #165530;
+  color: #fff;
+  border: 3px solid #761e33;
+  border-radius: 5px;
+}
+.header a:hover {
+  color: #761e33;
+  background: #fff;
+}
+
+.smurf-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.smurf-card {
+  text-align: center;
+  background: #165530;
+  font-size: 2rem;
+  color: #fff;
+  margin: 10px;
+  padding: 15px 20px;
+  border: 3px solid #761e33;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.smurf-card:hover {
+  color: #165530;
+  background: #fff;
+}
+
+.smurf-card a {
+  text-decoration: none;
+  margin: 10px;
+}
+.smurf-card a:hover {
+  text-decoration: none;
+}
+
+.smurf-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+  padding: 20px 0 20px 0;
+  border: 3px solid #761e33;
+  border-radius: 15px;
+  text-align: center;
+  background: #fff;
+}
+
+.smurf-page h3 {
+  font-size: 30px;
+  margin: 0 0 15px 0;
+}
+
+.smurf-page strong {
+  font-size: 20px;
+}
+
+.smurf-page p {
+  font-size: 20px;
+}
+
+.buttons-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+h3 {
+  color: #761e33;
+  font-family: "Aladin", cursive;
+}
+
+h2 {
+  font-family: "Aladin", cursive;
+  font-weight: bold;
 }
